@@ -17,6 +17,14 @@ export default function PackingList({ items, setItems }) {
       .slice()
       .sort((a, b) => Number(a.packed) - Number(b.packed));
 
+  const handleClearList = () => {
+    const confirmed = window.confirm(
+      'Are you sure you want to delete all items?'
+    );
+
+    if (confirmed) setItems([]);
+  };
+
   return (
     <div className='list'>
       <ul>
@@ -34,6 +42,7 @@ export default function PackingList({ items, setItems }) {
           <option value='name'>Sort by name</option>
           <option value='packed'>Sort by packed status</option>
         </select>
+        <button onClick={handleClearList}>Clear list</button>
       </div>
     </div>
   );
