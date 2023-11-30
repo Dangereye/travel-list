@@ -4,8 +4,10 @@ export default function Footer({ items }) {
   if (!items.length) {
     content = <em>Start adding items to your packing list</em>;
   } else {
-    const numItems = items.length;
-    const numPacked = items.filter((item) => item.packed).length;
+    const numItems = items.reduce((a, c) => a + c.quantity, 0);
+    const numPacked = items
+      .filter((item) => item.packed)
+      .reduce((a, c) => a + c.quantity, 0);
     const percentage = Math.round((numPacked / numItems) * 100) | 0;
     content = (
       <em>
