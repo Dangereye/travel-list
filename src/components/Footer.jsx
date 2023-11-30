@@ -8,7 +8,7 @@ export default function Footer({ items }) {
     const numPacked = items
       .filter((item) => item.packed)
       .reduce((a, c) => a + c.quantity, 0);
-    const percentage = Math.round((numPacked / numItems) * 100) | 0;
+    const percentage = Math.round((numPacked / numItems) * 100);
     content = (
       <em>
         {percentage === 100
